@@ -53,11 +53,18 @@
 * Route protection using JWT stored in localStorage
 
 ---
+## Version
+┬ @tailwindcss/vite@4.1.11
+│ └── vite@7.0.4 deduped
+├─┬ @vitejs/plugin-react@4.6.0
+│ └── vite@7.0.4 deduped
+└── vite@7.0.4
 
 ## How to Run (Frontend):
 
 ```bash
 cd frontend
+cd my-app
 npm install
 npm run dev
 ```
