@@ -5,6 +5,7 @@ import ForgotPassword from '../pages/ForgetPassword/ForgetPassword';
 import VerifyOtp from '../pages/VerifyOTP/VerifyOTP';
 import ResetPassword from '../pages/ResetPassword/ResetPassword';
 import Dashboard from '../pages/Dashboard/Dashboard';
+import AdminDashboard from '../pages/AdminDashboard';
 
 export function Router() {
   return (
@@ -15,7 +16,7 @@ export function Router() {
       <Route path="/verify-otp" element={<VerifyOtp />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
       <Route path="/dashboard" element={<Dashboard />} />
-
+<Route path="/admin-dashboard" element={<AdminDashboard/>} />
     </Routes>
   );
 }

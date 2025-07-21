@@ -15,26 +15,32 @@ const Dashboard = () => {
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!token || !userId) return;
+ useEffect(() => {
+  if (!token || !userId) return;
 
-    const fetchUser = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/api/users/${userId}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        setUser(res.data);
-        setUsername(res.data.username);
-      } catch (err) {
-        setUpdateMsg("User not logged in or error fetching user.");
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/users/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      setUser(res.data);
+      setUsername(res.data.username);
+
+      // 🚀 Check user type and redirect to admin dashboard
+      if (res.data.userType === "admin") {
+        navigate("/admin-dashboard");
       }
-    };
+    } catch (err) {
+      setUpdateMsg("User not logged in or error fetching user.");
+    }
+  };
 
-    fetchUser();
-  }, [token, userId]);
+  fetchUser();
+}, [token, userId]);
 
   const handleImageUpload = async () => {
     const formData = new FormData();
